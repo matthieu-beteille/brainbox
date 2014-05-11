@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Brainbox</title>
+  <%= stylesheet_link_tag    "application"%>
+  <%= javascript_include_tag "application"%>
+  <%= yield :javascript_includes %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<header class="container">
+	 <nav class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- You'll want to use a responsive image option so this logo looks good on devices - I recommend using something like retina.js (do a quick Google search for it and you'll find it) -->
+          <%= link_to 'Brainbox', root_path, class: 'navbar-brand' %>         
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav navbar-right">
+          	<% if user_signed_in? && current_user.role=="admin"%>
+			<li>
+				<%= link_to 'Admin Page', admin_path, method: 'get' %>
+			</li>
+			<% end %>
+            <% if user_signed_in? %>
+            <li>
+				<%= link_to 'Sign out', destroy_user_session_path, method: 'delete' %>
+			</li>
+			<% end %>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container -->
+    </nav>
+
+	<!--<nav class="navbar navbar-default">
+		<div class="navbar-header">
+			<%= link_to 'Brainbox', root_path, class: 'navbar-brand' %>
+		</div>
+		<div class="pull-right right-button">
+		<% if user_signed_in? %>
+			<%= link_to 'Sign out', destroy_user_session_path, method: 'delete', class: 'btn btn-default navbar-btn' %>
+		<% end %>
+		</div>
+		<div class="pull-right ">
+		<% if user_signed_in? && current_user.role=="admin"%>
+			<%= link_to 'Admin Page', admin_path, method: 'get', class: 'btn btn-default navbar-btn' %>
+		<% end %>
+		</div>
+	</nav>	 -->
+</header>
+
+		<div class="container" style='padding: 0px;'>
+			<%= flash_messages if show_layout_flash? %>
+		</div>
+
+	<%= yield %>
+
+</body>
+</html>

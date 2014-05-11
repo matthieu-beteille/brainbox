@@ -1,0 +1,13 @@
+Bonjour <%= @user.name.capitalize %>,
+
+Attention vous allez bientôt atteindre le nombre maximal de brainbox pour un compte <%=@user.account.subscription_type.capitalize %> .
+
+Vous disposez actuellement de <%= @user.account.brainboxes.size %>  <%= raw "brainbox".pluralize(@user.account.brainboxes.size) %> sur  <%= @user.account.bbs_max %> .
+
+Nous vous suggérons de changer de type de compte pour bénéficier de davantage de brainboxes. Pour cela rendez-vous sur la page d'administration de votre espace brainbox.
+
+Merci de votre confiance
+
+L'équipe Brainbox.
+
+(Cet email a été généré automatiquement : ne pas répondre )

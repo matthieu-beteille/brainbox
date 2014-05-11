@@ -1,0 +1,50 @@
+<div class='container'>
+	<div class='row'>
+		<div class="col-md-6 col-md-offset-3 panel panel-default">
+			<div class="panel-body">		
+				<h2>Create an Account</h2>
+
+				<%= form_for @account do |f| %>
+					<%= f.fields_for :owner do|o| %>
+						<%= form_group_for o, :name do %>
+							<%= o.text_field :name, class: 'form-control' %>
+						<%end %>
+						<%= form_group_for o, :email do %>
+							<%= o.text_field :email, class: 'form-control' %>
+						<%end %>
+						<%= form_group_for o, :password do %>
+							<%= o.password_field :password, class: 'form-control' %>
+						<%end %>
+						<%= form_group_for o, :password_confirmation do %>
+							<%= o.password_field :password_confirmation, class: 'form-control' %>
+						<%end %>
+
+						<%= o.hidden_field :role, :value => "admin" %>
+					<% end %>
+
+					<%= form_group_for f, :subdomain do %>
+						<div class="input-group">				
+							<%=f.text_field :subdomain, class: 'form-control' %>
+							<span class="input-group-addon">.brainbox.dev</span>
+						</div>
+					<%end%>
+
+					<%= form_group_for f, :subscription_type, :label => "Choose your subscription type" do %>
+						<div class="input-group">
+							<div class="btn-group">
+								<% Account::SUBSCRIPTION_TYPES.each do |type| %>
+									<label class="radio-test">
+									<%= f.radio_button :subscription_type, type, :class => "btn" %>
+									<%= f.label :subscription_type, type.capitalize, :class => "btn btn-default" %>
+								<% end %>
+							</div>
+						</div>
+					<% end %>
+					
+					
+					<%= f.submit class:'btn btn-primary' %>
+			<% end %>
+			</div>
+		</div>
+	</div>
+</div>

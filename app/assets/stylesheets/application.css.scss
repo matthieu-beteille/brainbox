@@ -1,0 +1,24 @@
+@import "twitter/bootstrap";
+
+@import "layout";
+
+@import "signin";
+
+@import "signup";
+
+@import "account";
+
+body {
+  padding-top: 100px; /* body padding for fixed top nav */
+  background-color: #e1e1e1;
+}
+
+.section,
+.section-colored{
+	 padding: 50px 0;
+}
+
+.section-colored {
+  background-color: #FFFFFF; /* change this to change the background color of a colored section */
+ }
+

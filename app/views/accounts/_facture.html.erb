@@ -1,0 +1,54 @@
+           <hr>
+          <h3> Utilisateurs </h3>
+           <hr>
+          <ul class="nav nav-pills nav-stacked">            
+          <% all_users.each do |user| %>
+                <%  if user.cost(month,year)!= 0 %>
+                <li>                
+                <span class="badge pull-right"><%= user.cost(month,year).round(2) %></span>
+                <%= user.name %>                 
+               </li>
+              <% end %>
+          <% end %>
+          </ul>
+          <hr>
+          <h3> Utilisateurs supprimés</h3>
+           <hr>
+          <ul class="nav nav-pills nav-stacked">            
+          <% deleted_users.each do |user| %>
+              <% if user.cost(month,year)!= 0 %>
+                <li>                
+                <span class="badge pull-right"><%= user.cost(month,year).round(2) %></span>
+                <%= user.name %>                 
+               </li>
+              <% end %>
+          <% end %>
+          </ul>
+          <hr>
+        <h3> Brainboxes </h3>
+         <hr>
+        <ul class="nav nav-pills nav-stacked">            
+          <% all_bbs.each do |bb| %>
+              <% if bb.cost(month,year)!= 0 %>
+                <li>                
+                <span class="badge pull-right"><%= bb.cost(month,year).round(2) %></span>
+                <%= bb.name %> 
+               </li>
+              <% end %>
+          <% end %>
+        </ul>
+        <hr>
+        <h3> Brainboxes supprimées</h3>
+         <hr>
+        <ul class="nav nav-pills nav-stacked">            
+          <% deleted_bbs.each do |bb| %>
+                <% if bb.cost(month,year)!= 0 %>
+                  <li>                
+                  <span class="badge pull-right"><%= bb.cost(month,year).round(2) %></span>
+                  <%= bb.name %> 
+                 </li>
+               <% end %>
+          <% end %>
+        </ul>
+        <hr>
+        <h3> Total <span class="badge pull-right"><%= current_user.account.cost(month, year).round(2) %></span></h3> 

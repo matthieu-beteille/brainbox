@@ -1,0 +1,2 @@
+$("#print_facture").html('');
+$("#print_facture").append("<%= escape_javascript("#{render partial: "facture", :locals => {:month => @month.to_i, :year => @year.to_i, :all_users => @all_users, :deleted_users => @deleted_users, :all_bbs => @all_bbs, :deleted_bbs => @deleted_bbs} }").html_safe %>");

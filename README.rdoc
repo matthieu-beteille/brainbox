@@ -1,0 +1,10 @@
+== Brainbox
+
+Saas application to store, share and rate ideas between coworkers
+
+=NOTE
+
+To test in local, use the alias lvh.me instead of localhost in order to be able to use subdomains !
+
+
+
